@@ -141,71 +141,6 @@ namespace Challenges
             return sourceWithoutNumberOfRotations.ToArray();
         }
 
-        public static List<Dictionary<string, Object>> PersonalizeCoupons(List<Dictionary<string, Object>> coupons,
-                                                                           List<string> preferredCategories)
-        {
-            var preferredCoupons = new List<Dictionary<string, Object>>();
-            foreach (var coupon in coupons)
-            {
-                foreach (var pair in coupon)
-                {
-                    if (pair.Key == "category")
-                    {
-                        var couponCategory = pair.Value;
-                        if (preferredCategories.Contains((string)couponCategory))
-                        {
-                            preferredCoupons.Add(coupon);
-                        }
-                    }
-                }
-            }
-
-            var orderedPreferredCoupons = preferredCoupons.OrderBy(dict => Convert.ToInt32(((float)dict["couponAmount"] / (float)dict["itemPrice"]) * 100));
-            foreach (var coupon in orderedPreferredCoupons)
-            {
-                coupon.Remove("code");
-            }
-            return orderedPreferredCoupons.ToList();
-        }
-
-        public static Dictionary<string, List<string>> ValidateLogs(List<Log> logs)
-        {
-            var resultLogs = new Dictionary<string, List<string>>();
-            foreach (var log in logs)
-            {
-                var userIdArr = log.userID.ToCharArray();
-                var firstDigit = userIdArr[0];
-                var secondDigit = userIdArr[1];
-                var firstAndSecond = $"{firstDigit}{secondDigit}";
-                var firstAndSecondInt = Convert.ToInt32(firstAndSecond);
-                var lastDigitInArray = $"{userIdArr[userIdArr.Length - 1]}";
-                var lastDigit = Convert.ToInt32(lastDigitInArray);
-                var modResult = false;
-                if (firstAndSecondInt > 0 && lastDigit > 0)
-                {
-                    modResult = firstAndSecondInt % lastDigit == 0;
-                }
-                if (!modResult || log.statusCode >= 400 || log.type == "ERROR")
-                {
-                    log.type = "ERROR";
-                }
-            }
-            var groupedLogs = logs.GroupBy(x => x.type);
-            foreach (var logGroup in groupedLogs)
-            {
-                if (resultLogs.ContainsKey(logGroup.Key))
-                {
-                    resultLogs[logGroup.Key].AddRange(logGroup.Select(x => x.messageID));
-                }
-                else
-                {
-                    resultLogs.Add(logGroup.Key, logGroup.Select(x => x.messageID).ToList());
-                }
-            }
-
-            return resultLogs;
-        }
-
         public static void MinimumBribes(int[] q)
         {
             var totalNumberOfMoves = 0;
@@ -257,22 +192,6 @@ namespace Challenges
                 num = num * i;
             }
             return num;
-        }
-
-        public class Log
-        {
-            public string type;
-            public string userID;
-            public string messageID;
-            public int statusCode;
-
-            public Log(string type, string userID, string messageID, int statusCode)
-            {
-                this.type = type;
-                this.userID = userID;
-                this.messageID = messageID;
-                this.statusCode = statusCode;
-            }
         }
     }
 }
