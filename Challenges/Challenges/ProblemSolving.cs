@@ -193,5 +193,33 @@ namespace Challenges
             }
             return num;
         }
+
+        public static int[] BreakingRecords(int[] scores)
+        {
+            int bestRecordBreak = 0;
+            int worstRecordBreak = 0;
+            int lowestScore = scores[0];
+            int highestScore = scores[0];
+            for (int i = 1; i < scores.Length; i++)
+            {
+                var currentScore = scores[i];
+                if (currentScore > highestScore)
+                {
+                    highestScore = currentScore;
+                    bestRecordBreak++;
+                }
+                else if (currentScore < lowestScore)
+                {
+                    lowestScore = currentScore;
+                    worstRecordBreak++;
+                }
+            }
+
+            return new[]
+            {
+                bestRecordBreak,
+                worstRecordBreak
+            };
+        }
     }
 }
