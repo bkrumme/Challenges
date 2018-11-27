@@ -20,7 +20,7 @@ namespace Challenges
             {
                 var distanceOfCurrentFruit = distancesOfFruit[i];
                 var positionOfCurrentFruit = tree + distanceOfCurrentFruit;
-                if (Enumerable.Range(startOfHouse, endOfHouse).Contains(positionOfCurrentFruit))
+                if (positionOfCurrentFruit >= startOfHouse && positionOfCurrentFruit <= endOfHouse)
                 {
                     totalFallen++;
                 }

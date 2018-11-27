@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplesAndOranges.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Cat.cs" />
     <Compile Include="IEntity.cs" />
