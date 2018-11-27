@@ -6,8 +6,18 @@ namespace Challenges.console
     {
         static void Main(string[] args)
         {
-            int[] arr2 = new[]{ 3, 4, 21, 36, 10, 28, 35, 5, 24, 42 };
-            ProblemSolving.BreakingRecords(arr2);
+            string[] st = Console.ReadLine().Split(' ');
+            int s = Convert.ToInt32(st[0]);
+            int t = Convert.ToInt32(st[1]);
+            string[] ab = Console.ReadLine().Split(' ');
+            int a = Convert.ToInt32(ab[0]);
+            int b = Convert.ToInt32(ab[1]);
+            string[] mn = Console.ReadLine().Split(' ');
+            int m = Convert.ToInt32(mn[0]);
+            int n = Convert.ToInt32(mn[1]);
+            int[] apples = Array.ConvertAll(Console.ReadLine().Split(' '), applesTemp => Convert.ToInt32(applesTemp));
+            int[] oranges = Array.ConvertAll(Console.ReadLine().Split(' '), orangesTemp => Convert.ToInt32(orangesTemp));
+            ApplesAndOranges.CountApplesAndOranges(s, t, a, b, apples, oranges);
         }
     }
 }
