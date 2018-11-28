@@ -44,6 +44,7 @@
     <Compile Include="ApplesAndOranges.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Cat.cs" />
+    <Compile Include="Exercism.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="ProblemSolving.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
